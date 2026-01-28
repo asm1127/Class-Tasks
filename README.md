@@ -1,0 +1,2 @@
+# Class-Tasks
+Masalalar yechimi
