@@ -180,37 +180,21 @@ class Hisob:
 
     def kirim(self, summa):
         self.balans += summa
-        return self.balans
 
     def chiqim(self, summa):
-        if self.balans >= summa:
-            self.balans -= summa
-            return self.balans
-        else:
-            return "Xatolik: Balansda mablag' yetarli emas"
+        self.balans -= summa
+
 
 class JamgArmaMixin:
-    def __init__(self, foiz_stavka, balans):
-        self.foiz_stavka = foiz_stavka
-        self.balans = balans
-
-    def foiz_qosh(self):
-        foiz_miqdori = self.balans * (self.foiz_stavka / 100)
-        self.balans += foiz_miqdori
-        return self.balans
+    def hisobla_foiz(self,):
+        return self.balans * self.foiz_stavka / 100
 
 class KreditMixin:
-    def __init__(self, foiz_stavka, balans, limit):
-        self.foiz_stavka = foiz_stavka
-        self.balans = balans
-        self.limit = limit
-        
     def chiqim(self, summa):
-        if self.balans + self.limit >= summa:
+        if self.balans - summa >= self.limit:
             self.balans -= summa
-            return self.balans
         else:
-            return "Xatolik: Kredit limiti yetarli emas"
+            return "Kredit limiti oshib ketdi"
 
 class VIPHisob(KreditMixin, JamgArmaMixin, Hisob):
     def __init__(self, raqam, egasi, balans, foiz_stavka, limit):
@@ -219,13 +203,6 @@ class VIPHisob(KreditMixin, JamgArmaMixin, Hisob):
         self.limit = limit
 
 vip = VIPHisob("001", "Karim", 2_000_000, foiz_stavka=12, limit=500_000)
-
-print(f"Boshlang'ich balans: {vip.balans} so'm")
-
-vip.foiz_qosh()
-print(f"Foiz qo'shilgandan keyin: {vip.balans} so'm") # 2,240,000
-
+print(vip.balans)
 vip.chiqim(2_400_000)
-print(f"2,400,000 chiqimdan keyingi balans: {vip.balans} so'm") # -160,000
-print(vip.chiqim(1_000_000))
-
+print(vip.balans)
