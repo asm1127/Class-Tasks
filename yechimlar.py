@@ -1,3 +1,4 @@
+
 # #1
 # class Transport:
 #     def __init__(self, model: str, yil: int) -> None:
@@ -171,38 +172,149 @@
 # print(f"Status: {natija.status()}")
 
 
-#6
-class Hisob:
-    def __init__(self, raqam, egasi, balans):
-        self.raqam = raqam
-        self.egasi = egasi
-        self.balans = balans
+# #6
+# class Hisob:
+#     def __init__(self, raqam, egasi, balans):
+#         self.raqam = raqam
+#         self.egasi = egasi
+#         self.balans = balans
+#
+#     def kirim(self, summa):
+#         self.balans += summa
+#
+#     def chiqim(self, summa):
+#         self.balans -= summa
+#
+#
+# class JamgArmaMixin:
+#     def hisobla_foiz(self):
+#         return self.balans * self.foiz_stavka / 100
+#
+# class KreditMixin:
+#     def chiqim(self, summa):
+#         if self.balans - summa >= self.limit:
+#             self.balans -= summa
+#         else:
+#             return "Kredit limiti oshib ketdi"
+#
+# class VIPHisob(KreditMixin, JamgArmaMixin, Hisob):
+#     def __init__(self, raqam, egasi, balans, foiz_stavka, limit):
+#         super().__init__(raqam, egasi, balans)
+#         self.foiz_stavka = foiz_stavka
+#         self.limit = limit
+#
+# vip = VIPHisob("001", "Karim", 2_000_000, foiz_stavka=12, limit=500_000)
+# print(vip.balans)
+# vip.chiqim(2_400_000)
+# print(vip.balans)
 
-    def kirim(self, summa):
-        self.balans += summa
+# #7
+# class Kurs:
+#     def __init__(self, nom, davomiylik_hafta, narx):
+#         self.nom = nom
+#         self.davomiylik_hafta = davomiylik_hafta
+#         self.narx = narx
+#
+#     def malumot(self):
+#         return f"Kurs: {self.nom}, Davomiylik: {self.davomiylik_hafta} hafta, Narx: {self.narx}"
+#
+# class OnlaynKurs(Kurs):
+#     def __init__(self, nom, davomiylik_hafta, narx, platforma):
+#         super().__init__(nom, davomiylik_hafta, narx)
+#         self.platforma = platforma
+#
+#     def malumot(self):
+#         return f"Platforma: {self.platforma}"
+#
+# class OfflineKurs(Kurs):
+#     def __init__(self, nom, davomiylik_hafta, narx, manzil):
+#         super().__init__(nom, davomiylik_hafta, narx)
+#         self.manzil = manzil
+#
+#     def malumot(self):
+#         return f"Manzil: {self.manzil}"
+#
+# kurslar = [
+#     OnlaynKurs("Python", "12", "1_800_000", " Coursera"),
+#     OfflineKurs("Kiberhavfsizlik", "40", "25_000_000", "Toshkent")
+# ]
+#
+# for kurs in kurslar:
+#     print(kurs.malumot())
 
-    def chiqim(self, summa):
-        self.balans -= summa
+# #8
+# class Taom:
+#     def __init__(self, nom, narx):
+#         self.nom = nom
+#         self.narx = narx
+#
+#     def tavsif(self):
+#         return f"Taom: {self.nom}, Narx: {self.narx}"
+#
+# class IssiqTaom(Taom):
+#     def __init__(self, nom, narx, kaloriya):
+#         super().__init__(nom, narx)
+#         self.kaloriya = kaloriya
+#
+#     def tavsif(self):
+#         return f"Taom: {self.nom}, Narx: {self.narx} so'm, Kaloriya: {self.kaloriya} kkal"
+#
+# class Ichimlik(Taom):
+#     def __init__(self, nom, narx, hajm_ml):
+#         super().__init__(nom, narx)
+#         self.hajm_ml = hajm_ml
+#
+#     def tavsif(self):
+#         return f"Ichimlik: {self.nom}, Narx: {self.narx} so'm, Hajmi: {self.hajm_ml} ml"
+#
+#     def chegirma_qollash(taomlar, foiz):
+#
+#         for taom in taomlar:
+#             chegirma_summasi = taom.narx * (foiz / 100)
+#             taom.narx -= chegirma_summasi
+#
+# osh = IssiqTaom("Palov", 30000, 850)
+# choy = Ichimlik("Ko'k choy", 5000, 500)
+# kabob = IssiqTaom("Shashlik", 15000, 450)
+#
+# menyular = [osh, choy, kabob]
+#
+# print(osh.tavsif())
+# print(choy.tavsif())
+# print(kabob.tavsif())
 
-
-class JamgArmaMixin:
-    def hisobla_foiz(self,):
-        return self.balans * self.foiz_stavka / 100
-
-class KreditMixin:
-    def chiqim(self, summa):
-        if self.balans - summa >= self.limit:
-            self.balans -= summa
-        else:
-            return "Kredit limiti oshib ketdi"
-
-class VIPHisob(KreditMixin, JamgArmaMixin, Hisob):
-    def __init__(self, raqam, egasi, balans, foiz_stavka, limit):
-        super().__init__(raqam, egasi, balans)
-        self.foiz_stavka = foiz_stavka
-        self.limit = limit
-
-vip = VIPHisob("001", "Karim", 2_000_000, foiz_stavka=12, limit=500_000)
-print(vip.balans)
-vip.chiqim(2_400_000)
-print(vip.balans)
+# #9
+# from abc import ABC, abstractmethod
+# from typing import List
+#
+# class JamoaAzo(ABC):
+#     def __init__(self, ism):
+#         self.ism = ism
+#
+#     @abstractmethod
+#     def vazia(self):
+#         return NotImplementedError
+#
+# class BackendDasturchi(JamoaAzo):
+#     def vazia(self):
+#         return "API va ma'lumotlar bazasi bilan ishlaydi"
+#
+# class FrontendDasturchi(JamoaAzo):
+#     def vazia(self):
+#         return "UI va foydalanuvchi tajribasini yaratadi"
+#
+# class Tester(JamoaAzo):
+#     def vazia(self):
+#         return "Tizimni test qiladi"
+#
+# def hisobot(azolar: List[JamoaAzo]):
+#     for azo in azolar:
+#         print(f"Ism: {azo.ism}, Vazifa: {azo.vazia()}")
+#
+# jamoa = [
+#     BackendDasturchi("Marjona"),
+#     FrontendDasturchi("Rayhona"),
+#     Tester("Maftuna")
+# ]
+#
+# hisobot(jamoa)
