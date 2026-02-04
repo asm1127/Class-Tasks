@@ -318,3 +318,98 @@
 # ]
 #
 # hisobot(jamoa)
+
+# #10
+# class QadamSanagich:
+#     def __init__(self, kunlik_maqsad, qadamlar):
+#         self.kunlik_maqsad = kunlik_maqsad
+#         self.qadamlar = qadamlar
+#
+#     def bajarilgan_kunlar(self):
+#         sanoq = 0
+#         for qadam in self.qadamlar:
+#             if qadam >= self.kunlik_maqsad:
+#                 sanoq += 1
+#             return sanoq
+#
+#     def ortalama_qadamlar(self):
+#          if not self.qadamlar:
+#              return 0
+#          return sum(self.qadamlar) / len(self.qadamlar)
+#
+# class MotivatsionQadamSanagich(QadamSanagich):
+#     def __init__(self, kunlik_maqsad, qadamlar):
+#         super().__init__(kunlik_maqsad, qadamlar)
+#
+#     def motivatsiya_xabari(self):
+#         if self.bajarilgan_kunlar() >= 5:
+#             return "Barakalla! Siz juda faol ekansiz!"
+#         else:
+#             return "Harakatni ko'proq oshiring!"
+#
+# hafta = [10000, 7500, 8200, 9000, 5000, 12000, 8000]
+# q = MotivatsionQadamSanagich(8000, hafta)
+# print(q.bajarilgan_kunlar())
+# print(q.ortalama_qadamlar())
+# print(q.motivatsiya_xabari())
+
+
+
+#               Hayotiy mavzudagi algoritmik masalalar
+
+# #1
+# def qaytim_hisobla(narx, tolangan):
+#     if tolangan < narx:
+#         return "Pul yetarli emas"
+#     else:
+#         return int(tolangan - narx)
+#
+# print(qaytim_hisobla(12000, 20000))
+# print(qaytim_hisobla(15000, 10000))
+
+# #2
+# def borsh_orinlar(jami, yolovchilar):
+#     if yolovchilar > jami:
+#         return "Joy yetmaydi"
+#     else:
+#         return int(yolovchilar - jami)
+#
+# print(borsh_orinlar(40, 32))
+# print(borsh_orinlar(50, 55))
+
+# #3
+# def jarima_hisobla(kechikkan_kun):
+#     if kechikkan_kun <= 0:
+#         return 0
+#
+#     jarima = 0
+#
+#     if kechikkan_kun <= 5:
+#         jarima = kechikkan_kun * 1000
+#     elif kechikkan_kun <= 10:
+#         jarima = (5 * 1000) + (kechikkan_kun - 5) * 2000
+#     else:
+#         jarima = (5 * 1000) + (5 * 2000) + (kechikkan_kun - 10) * 3000
+#
+#     return jarima
+#
+# print(jarima_hisobla(3))
+# print(jarima_hisobla(7))
+# print(jarima_hisobla(12))
+
+#4
+def reyting_tahlil(baholar):
+    if not baholar:
+        return "Ro'yhat bo'sh"
+
+    ortalma = sum(baholar) / len(baholar)
+
+    eng_yuqori = max(baholar)
+
+    eng_past = min(baholar)
+
+    a_soni = 0
+    for baho in baholar:
+        if 86 <= baho <= 100:
+            a_soni += 1
+        return 
