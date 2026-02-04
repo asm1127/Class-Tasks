@@ -400,16 +400,25 @@
 #4
 def reyting_tahlil(baholar):
     if not baholar:
-        return "Ro'yhat bo'sh"
+        return "Ro'yxat bo'sh"
 
-    ortalma = sum(baholar) / len(baholar)
+    ortalama = sum(baholar) / len(baholar)
 
     eng_yuqori = max(baholar)
-
     eng_past = min(baholar)
 
     a_soni = 0
     for baho in baholar:
         if 86 <= baho <= 100:
             a_soni += 1
-        return 
+
+    return {
+        "ortalama": round(ortalama, 2),
+        "eng_yuqori": eng_yuqori,
+        "eng_past": eng_past,
+        "a_soni": a_soni
+    }
+
+baholar = [56, 89, 100, 75, 90, 86]
+natija = reyting_tahlil(baholar)
+print(natija)
